@@ -83,7 +83,7 @@
                         <h4 class="text-center">Scan</h4>
                     </div>
                     <div class="form-group mb-3 text-center">
-                        <img src="images/tutuqr.png" width="200" />
+                        <img src="../assets/tutuqr.png" width="200" />
                     </div>
                 </div>
                 <!--<<div class="modal-footer">
