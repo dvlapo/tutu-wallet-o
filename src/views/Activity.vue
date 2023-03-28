@@ -2,6 +2,7 @@
 import { reactive } from "vue";
 import Dropdown from "../components/Dropdown.vue";
 import Nav from "../components/Nav.vue";
+import Transaction from "../components/Transaction.vue";
 
 const state = reactive({
     isDropDownOpen: false,
