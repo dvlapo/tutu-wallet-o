@@ -53,7 +53,6 @@ nav {
   transition: .2s;
 }*/
 .nav-item.active,
-.nav-item.router-link-active,
 .nav-item.router-link-exact-active {
     text-decoration: none;
     color: #e36b09;

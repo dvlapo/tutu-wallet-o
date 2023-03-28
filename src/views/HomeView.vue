@@ -4,6 +4,7 @@ import Dropdown from "../components/Dropdown.vue";
 import RecieveModal from "../components/modals/RecieveModal.vue";
 import TransferModal from "../components/modals/TransferModal.vue";
 import Transaction from "../components/Transaction.vue";
+import Nav from "../components/Nav.vue";
 
 const state = reactive({
     isDropDownOpen: false,
@@ -116,6 +117,7 @@ function toggleDropDown() {
             </div>
         </div>
         <!-- Wrapper Ends -->
+        <Nav />
     </div>
 
     <TransferModal />

@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import Nav from "../components/Nav.vue";
+</script>
+
 <template>
     <div id="user">
         <div class="container">
@@ -54,5 +58,6 @@
                 </div>
             </div>
         </div>
+        <Nav />
     </div>
 </template>

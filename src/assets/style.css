@@ -77,7 +77,6 @@ body {
     font-style: normal;
     font-weight: 400;
     font-variant-ligatures: common-ligatures;
-    max-width: 480px;
     height: 100vh;
     margin: 0 auto;
     background-color: #f5f8fe;
@@ -86,6 +85,13 @@ body {
 *:focus {
     outline: none;
     border: none;
+}
+
+#homepage,
+#activity,
+#user {
+    margin-inline: auto;
+    max-width: 480px;
 }
 
 nav {
@@ -97,7 +103,9 @@ nav {
     background: #192184;
 }
 .loginPG {
-    margin-top: 30%;
+    padding-top: 20%;
+    max-width: 480px;
+    margin-inline: auto;
 }
 .text-white {
     color: #fff;

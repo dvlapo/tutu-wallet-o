@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive } from "vue";
 import Dropdown from "../components/Dropdown.vue";
+import Nav from "../components/Nav.vue";
 
 const state = reactive({ isDropDownOpen: false });
 
@@ -173,6 +174,7 @@ function toggleDropDown() {
                 </div>
             </div>
         </div>
+        <Nav />
     </div>
     <!-- Wrapper Ends -->
 </template>
