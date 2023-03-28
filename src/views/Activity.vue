@@ -3,7 +3,39 @@ import { reactive } from "vue";
 import Dropdown from "../components/Dropdown.vue";
 import Nav from "../components/Nav.vue";
 
-const state = reactive({ isDropDownOpen: false });
+const state = reactive({
+    isDropDownOpen: false,
+    transactions: [
+        {
+            id: 1,
+            title: "money for concert..",
+            transactionType: "Transfer",
+            date: "2 days ago",
+            amount: "₦150,000",
+        },
+        {
+            id: 2,
+            title: "Money for food in...",
+            transactionType: "Recieve",
+            date: "2 days ago",
+            amount: "₦-150,000",
+        },
+        {
+            id: 3,
+            title: "money for concert..",
+            transactionType: "Transfer",
+            date: "2 days ago",
+            amount: "₦150,000",
+        },
+        {
+            id: 4,
+            title: "Money for food in...",
+            transactionType: "Recieve",
+            date: "2 days ago",
+            amount: "₦-150,000",
+        },
+    ],
+});
 
 function toggleDropDown() {
     state.isDropDownOpen = !state.isDropDownOpen;
@@ -50,124 +82,11 @@ function toggleDropDown() {
                 <div class="page-content">
                     <div class="transactions">
                         <div class="clearfix">
-                            <ul class="trans clearfix">
-                                <a href="transaction-details.html">
-                                    <li>
-                                        <span class="t-img">
-                                            <i
-                                                class="fa fa-angle-double-right"
-                                            ></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h5>money for concert..</h5>
-                                        <h6>
-                                            Transfer &nbsp; ~
-                                            <small> 2 days ago </small>
-                                        </h6>
-                                    </li>
-                                    <li><h4 class="credit">₦150,000</h4></li>
-                                </a>
-                            </ul>
-
-                            <ul class="trans clearfix">
-                                <a href="transaction-details.html">
-                                    <li>
-                                        <span class="t-img2">
-                                            <i
-                                                class="fa fa-angle-double-left"
-                                            ></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h5>Money for food in...</h5>
-                                        <h6>
-                                            Recieve &nbsp; ~
-                                            <small> 2 days ago </small>
-                                        </h6>
-                                    </li>
-                                    <li><h4 class="debit">₦-150,000</h4></li>
-                                </a>
-                            </ul>
-
-                            <ul class="trans clearfix">
-                                <a href="transaction-details.html">
-                                    <li>
-                                        <span class="t-img">
-                                            <i
-                                                class="fa fa-angle-double-right"
-                                            ></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h5>money for concert..</h5>
-                                        <h6>
-                                            Transfer &nbsp; ~
-                                            <small> 2 days ago </small>
-                                        </h6>
-                                    </li>
-                                    <li><h4 class="credit">₦150,000</h4></li>
-                                </a>
-                            </ul>
-
-                            <ul class="trans clearfix">
-                                <a href="transaction-details.html">
-                                    <li>
-                                        <span class="t-img2">
-                                            <i
-                                                class="fa fa-angle-double-left"
-                                            ></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h5>Money for food in...</h5>
-                                        <h6>
-                                            Recieve &nbsp; ~
-                                            <small> 2 days ago </small>
-                                        </h6>
-                                    </li>
-                                    <li><h4 class="debit">₦-150,000</h4></li>
-                                </a>
-                            </ul>
-
-                            <ul class="trans clearfix">
-                                <a href="transaction-details.html">
-                                    <li>
-                                        <span class="t-img">
-                                            <i
-                                                class="fa fa-angle-double-right"
-                                            ></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h5>money for concert..</h5>
-                                        <h6>
-                                            Transfer &nbsp; ~
-                                            <small> 2 days ago </small>
-                                        </h6>
-                                    </li>
-                                    <li><h4 class="credit">₦150,000</h4></li>
-                                </a>
-                            </ul>
-
-                            <ul class="trans clearfix">
-                                <a href="transaction-details.html">
-                                    <li>
-                                        <span class="t-img2">
-                                            <i
-                                                class="fa fa-angle-double-left"
-                                            ></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h5>Money for food in...</h5>
-                                        <h6>
-                                            Recieve &nbsp; ~
-                                            <small> 2 days ago </small>
-                                        </h6>
-                                    </li>
-                                    <li><h4 class="debit">₦-150,000</h4></li>
-                                </a>
+                            <ul
+                                class="trans clearfix"
+                                v-for="transaction in state.transactions"
+                            >
+                                <Transaction :transaction="transaction" />
                             </ul>
                         </div>
                     </div>
