@@ -1,8 +1,44 @@
 <script setup>
 import { reactive } from "vue";
 import Dropdown from "../components/Dropdown.vue";
+import RecieveModal from "../components/modals/RecieveModal.vue";
+import TransferModal from "../components/modals/TransferModal.vue";
+import Transaction from "../components/Transaction.vue";
 
-const state = reactive({ isDropDownOpen: false });
+const state = reactive({
+    isDropDownOpen: false,
+    showTrasferModal: false,
+    transactions: [
+        {
+            id: 1,
+            title: "money for concert..",
+            transactionType: "Transfer",
+            date: "2 days ago",
+            amount: "₦150,000",
+        },
+        {
+            id: 2,
+            title: "Money for food in...",
+            transactionType: "Recieve",
+            date: "2 days ago",
+            amount: "₦-150,000",
+        },
+        {
+            id: 3,
+            title: "money for concert..",
+            transactionType: "Transfer",
+            date: "2 days ago",
+            amount: "₦150,000",
+        },
+        {
+            id: 4,
+            title: "Money for food in...",
+            transactionType: "Recieve",
+            date: "2 days ago",
+            amount: "₦-150,000",
+        },
+    ],
+});
 
 function toggleDropDown() {
     state.isDropDownOpen = !state.isDropDownOpen;
@@ -50,8 +86,6 @@ function toggleDropDown() {
                     <div class="elx">
                         <div class="">
                             <a
-                                class=""
-                                href="#"
                                 role="button"
                                 id="dropdownMenuLink"
                                 data-bs-toggle="dropdown"
@@ -70,136 +104,11 @@ function toggleDropDown() {
                 <div class="page-content">
                     <div class="transactions">
                         <div class="clearfix">
-                            <ul class="trans clearfix">
-                                <a href="transaction-details.html">
-                                    <li>
-                                        <span class="t-img">
-                                            <i
-                                                class="fa fa-angle-double-right"
-                                            ></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h5>money for concert..</h5>
-                                        <h6>
-                                            Transfer &nbsp; ~
-                                            <small> 2 days ago </small>
-                                        </h6>
-                                    </li>
-                                    <li>
-                                        <h4 class="credit">₦150,000</h4>
-                                    </li>
-                                </a>
-                            </ul>
-
-                            <ul class="trans clearfix">
-                                <a href="transaction-details.html">
-                                    <li>
-                                        <span class="t-img2">
-                                            <i
-                                                class="fa fa-angle-double-left"
-                                            ></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h5>Money for food in...</h5>
-                                        <h6>
-                                            Recieve &nbsp; ~
-                                            <small> 2 days ago </small>
-                                        </h6>
-                                    </li>
-                                    <li>
-                                        <h4 class="debit">₦-150,000</h4>
-                                    </li>
-                                </a>
-                            </ul>
-
-                            <ul class="trans clearfix">
-                                <a href="transaction-details.html">
-                                    <li>
-                                        <span class="t-img">
-                                            <i
-                                                class="fa fa-angle-double-right"
-                                            ></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h5>money for concert..</h5>
-                                        <h6>
-                                            Transfer &nbsp; ~
-                                            <small> 2 days ago </small>
-                                        </h6>
-                                    </li>
-                                    <li>
-                                        <h4 class="credit">₦150,000</h4>
-                                    </li>
-                                </a>
-                            </ul>
-
-                            <ul class="trans clearfix">
-                                <a href="transaction-details.html">
-                                    <li>
-                                        <span class="t-img2">
-                                            <i
-                                                class="fa fa-angle-double-left"
-                                            ></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h5>Money for food in...</h5>
-                                        <h6>
-                                            Recieve &nbsp; ~
-                                            <small> 2 days ago </small>
-                                        </h6>
-                                    </li>
-                                    <li>
-                                        <h4 class="debit">₦-150,000</h4>
-                                    </li>
-                                </a>
-                            </ul>
-
-                            <ul class="trans clearfix">
-                                <a href="transaction-details.html">
-                                    <li>
-                                        <span class="t-img">
-                                            <i
-                                                class="fa fa-angle-double-right"
-                                            ></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h5>money for concert..</h5>
-                                        <h6>
-                                            Transfer &nbsp; ~
-                                            <small> 2 days ago </small>
-                                        </h6>
-                                    </li>
-                                    <li>
-                                        <h4 class="credit">₦150,000</h4>
-                                    </li>
-                                </a>
-                            </ul>
-
-                            <ul class="trans clearfix">
-                                <a href="transaction-details.html">
-                                    <li>
-                                        <span class="t-img2">
-                                            <i
-                                                class="fa fa-angle-double-left"
-                                            ></i>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <h5>Money for food in...</h5>
-                                        <h6>
-                                            Recieve &nbsp; ~
-                                            <small> 2 days ago </small>
-                                        </h6>
-                                    </li>
-                                    <li>
-                                        <h4 class="debit">₦-150,000</h4>
-                                    </li>
-                                </a>
+                            <ul
+                                class="trans clearfix"
+                                v-for="transaction in state.transactions"
+                            >
+                                <Transaction :transaction="transaction" />
                             </ul>
                         </div>
                     </div>
@@ -209,99 +118,8 @@ function toggleDropDown() {
         <!-- Wrapper Ends -->
     </div>
 
-    <div
-        class="modal fade"
-        id="transferModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-    >
-        <div class="modal-dialog bottom-modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Transfer</h5>
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                    ></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group mb-3">
-                        <label>
-                            Reciever
-                            <span
-                                class="ast"
-                                data-bs-toggle="tooltip"
-                                data-bs-placement="top"
-                                title="important"
-                                >*</span
-                            >
-                        </label>
-                        <input
-                            type="text"
-                            class="form-control fm"
-                            placeholder="@username or wallet ID of benefecial"
-                            required=""
-                        />
-                    </div>
-                    <div class="form-group mb-3 text-center">
-                        <label> Enter Amount </label>
-                        <input
-                            type="text"
-                            class="form-control amount"
-                            data-type="currency"
-                            placeholder="₦1,000,000.00"
-                            required=""
-                            pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$"
-                        />
-                    </div>
-                    <div class="form-group mb-3 text-center">
-                        <button type="button" class="cusbtn">Transfer</button>
-                    </div>
-                </div>
-                <!--<<div class="modal-footer">
-        button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Transfer changes</button>
-      </div>-->
-            </div>
-        </div>
-    </div>
-
-    <div
-        class="modal fade"
-        id="receiveModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-    >
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Receive</h5>
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                    ></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group mb-3">
-                        <h4 class="text-center">Scan</h4>
-                    </div>
-                    <div class="form-group mb-3 text-center">
-                        <img src="../assets/tutuqr.png" width="200" />
-                    </div>
-                </div>
-                <!--<<div class="modal-footer">
-        button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Transfer changes</button>
-      </div>-->
-            </div>
-        </div>
-    </div>
+    <TransferModal />
+    <RecieveModal />
 </template>
 
 <style scoped></style>

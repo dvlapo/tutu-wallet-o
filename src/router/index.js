@@ -22,6 +22,11 @@ const router = createRouter({
             name: "user",
             component: () => import("../views/User.vue"),
         },
+        {
+            path: "/transation-details/:tId",
+            name: "transaction",
+            component: () => import("../views/TransactionDetails.vue"),
+        },
     ],
 });
 
